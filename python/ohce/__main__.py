@@ -1,9 +1,10 @@
-from ohce.greeter import Greeter
+from ohce.greeter import Greeter, SystemClock
 from ohce.ui import UI
 
 
 def main():
-    greeter = Greeter()
+    clock = SystemClock()  
+    greeter = Greeter(clock)
     greetings = greeter.greet()
     print(greetings)
 
@@ -11,4 +12,5 @@ def main():
     ui.main_loop()
 
 
-main()
+if __name__ == "__main__":
+    main()

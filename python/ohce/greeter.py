@@ -7,15 +7,23 @@ class SystemClock:
         return now.hour
 
 
-class Greeter:
-    def __init__(self):
-        self.clock = SystemClock()
+class FakeClock:
+    def __init__(self, hour):
+        self.hour = hour
+        
+    def get_current_hour(self):
+        return self.hour
 
+
+class Greeter:
+    def __init__(self, clock):
+        self.clock = clock
+        
     def greet(self):
-        current_hour = self.clock.current_hour()
-        if 6 <= current_hour < 12:
+        hour = self.clock.get_current_hour()
+        if 6 <= hour < 12:
             return "Good morning"
-        if 12 <= current_hour <= 19:
+        elif 12 <= hour <= 19:
             return "Good afternoon"
-        if current_hour >= 20 or current_hour < 6:
+        else:  # hour >= 20 or hour < 6
             return "Good night"

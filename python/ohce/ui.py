@@ -15,10 +15,9 @@ class UI:
 
     def main_loop(self):
         while True:
-            input = self.interactor.read_input()
-            if input == "quit":
+            text = input("> ")
+            if text.lower() == "quit":
                 break
-            reversed = reverse(input)
-            self.interactor.print_message(reversed)
-            if reversed == input:
-                self.interactor.print_message("That was a palindrome!")
+            print(text[::-1])
+            if text.lower() == text[::-1].lower():
+                print("That was a palindrome!")
