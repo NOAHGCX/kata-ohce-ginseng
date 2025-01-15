@@ -8,7 +8,8 @@ def main():
     greetings = greeter.greet()
     print(greetings)
 
-    ui = UI()
+    interactor = ConsoleInteractor()
+    ui = UI(interactor)
     ui.main_loop()
 
 

@@ -8,26 +8,28 @@ class ConsoleInteractor:
     def print_message(self, message):
         print(message)
 
+class FakeConsoleInteractor:
+    def __init__(self, inputs):
+        self.inputs = inputs
+        self.outputs = []
+
+    def read_input(self):
+        return self.inputs.pop(0)
+
+    def print_message(self, message):
+        self.outputs.append(message)
 
 class UI:
-    def __init__(self):
-        self.interactor = ConsoleInteractor()
+    def __init__(self, interactor):
+        self.interactor = interactor
 
     def main_loop(self):
         while True:
-            text = input("> ")
-            if text.lower() == "quit":
+            input = self.interactor.read_input()
+            if input == "quit":
                 break
-            self.process_input(text)
-
-            
-
-    def process_input(self, text: str) -> None:
-        # Reverse the input
-        reversed_text = text[::-1]
-        print(reversed_text)
-        
-        # Check if it's a palindrome
-        if text == reversed_text:
-            print("That was a palindrome!")
+            reversed = reverse(input)
+            self.interactor.print_message(reversed)
+            if reversed == input:
+                self.interactor.print_message("That was a palindrome!")
 
