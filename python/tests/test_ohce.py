@@ -18,25 +18,23 @@ def test_nightly_greeting():
     assert result == "Good night"
 
 
-def test_greeting_never_returns_none():
+@pytest.mark.parametrize("hour", range(24))
+def test_greeting_never_returns_none(hour):
     """
     Check that for each hour from 0 to 23, the greet()
     method never return None
     """
-    for hour in range(24):
-        # Arrange
-        clock = FakeClock(hour)
-        greeter = Greeter(clock)
+    
+    # Arrange
+    clock = FakeClock(hour)
+    greeter = Greeter(clock)
+    
+    # Act
+    result = greeter.greet()
+    
+    # Assert
+    assert result is not None
         
-        # Act
-        result = greeter.greet()
-        
-        # Assert
-        assert result is not None
-        
-        
-
-
 
 def test_ohce_main_loop():
     """
