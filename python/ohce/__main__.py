@@ -1,6 +1,5 @@
 from ohce.greeter import Greeter, SystemClock
-from ohce.ui import UI
-
+from ohce.ui import UI, ConsoleInteractor
 
 def main():
     clock = SystemClock()
