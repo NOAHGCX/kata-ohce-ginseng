@@ -3,7 +3,7 @@ from ohce.ui import UI
 
 
 def main():
-    clock = SystemClock()  
+    clock = SystemClock()
     greeter = Greeter(clock)
     greetings = greeter.greet()
     print(greetings)
