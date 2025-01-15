@@ -18,9 +18,9 @@ class UI:
             text = input("> ")
             if text.lower() == "quit":
                 break
-            print(text[::-1])
-            if text.lower() == text[::-1].lower():
-                print("That was a palindrome!")
+            self.process_input(text)
+
+            
 
     def process_input(self, text: str) -> None:
         # Reverse the input
