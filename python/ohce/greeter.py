@@ -6,16 +6,6 @@ class SystemClock:
         now = datetime.now()
         return now.hour
 
-
-class FakeClock:
-    def __init__(self, hour):
-        self.hour = hour
-        
-    def current_hour(self):
-        return self.hour
-
-
-
 class Greeter:
     def __init__(self, clock):
         self.clock = clock

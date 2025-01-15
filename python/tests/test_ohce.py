@@ -1,6 +1,24 @@
 import pytest
-from ohce.greeter import Greeter, FakeClock
-from ohce.ui import UI, FakeConsoleInteractor
+from ohce.greeter import Greeter
+from ohce.ui import UI
+
+class FakeClock:
+    def __init__(self, hour):
+        self.hour = hour
+        
+    def current_hour(self):
+        return self.hour
+
+class FakeConsoleInteractor:
+    def __init__(self, inputs):
+        self.inputs = inputs
+        self.outputs = []
+
+    def read_input(self):
+        return self.inputs.pop(0)
+
+    def print_message(self, message):
+        self.outputs.append(message)
 
 def test_nightly_greeting():
     """

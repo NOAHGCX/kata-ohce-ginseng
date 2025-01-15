@@ -8,17 +8,6 @@ class ConsoleInteractor:
     def print_message(self, message):
         print(message)
 
-class FakeConsoleInteractor:
-    def __init__(self, inputs):
-        self.inputs = inputs
-        self.outputs = []
-
-    def read_input(self):
-        return self.inputs.pop(0)
-
-    def print_message(self, message):
-        self.outputs.append(message)
-
 class UI:
     def __init__(self, interactor):
         self.interactor = interactor
